@@ -1,13 +1,14 @@
-/* Переменные темы */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@400;600;900&display=swap');
+
 :root {
-    --bg-color: #0e1117;
-    --card-bg: #161b22;
-    --border-color: #30363d;
-    --text-primary: #e6edf3;
-    --text-secondary: #8b949e;
-    --accent: #58a6ff;
-    --accent-hover: #79c0ff;
-    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --bg-main: #08080a;
+    --text-primary: #ffffff;
+    --text-muted: #80808a;
+    --accent-red: #ff2a2a;
+    --border-grid: rgba(255, 255, 255, 0.15);
+    
+    --font-giant: 'Space Grotesk', 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 * {
@@ -17,24 +18,181 @@
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: var(--font-family);
-    line-height: 1.7;
-    font-size: 18px;
-    padding-bottom: 60px;
+    font-family: var(--font-mono);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+    /* Легкий сетчатый фон как на постерах */
+    background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
-/* Контейнер */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* Внешняя техническая рамка постера */
+.poster-frame {
+    margin: 16px;
+    border: 1px solid var(--border-grid);
+    padding: 24px;
+    min-height: calc(100vh - 32px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
 }
 
-/* Шапка и навигация */
+/* Декоративные уголки (крестики / метки) */
+.poster-frame::before {
+    content: '+';
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+.poster-frame::after {
+    content: '+';
+    position: absolute;
+    bottom: -12px;
+    right: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* Шапка с техническими метками */
 header {
-    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border-grid);
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.system-status {
+    color: var(--accent-red);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.system-status::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-red);
+    border-radius: 50%;
+}
+
+nav .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+nav a:hover, nav a.active {
+    color: var(--text-primary);
+}
+
+/* Огромный типографический заголовок */
+.giant-title {
+    font-family: var(--font-giant);
+    font-size: clamp(3rem, 12vw, 9rem);
+    font-weight: 900;
+    line-height: 0.85;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    margin: 20px 0;
+    word-break: break-word;
+}
+
+.giant-title .outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--text-primary);
+}
+
+/* Мелкий текст-инструкция (Poster Captions) */
+.poster-caption {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    max-width: 400px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+/* Модульная сетка для разделов */
+.poster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border-grid);
+    border: 1px solid var(--border-grid);
+    margin: 40px 0;
+}
+
+.poster-card {
+    background: var(--bg-main);
+    padding: 24px;
+    text-decoration: none;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    transition: background 0.3s;
+}
+
+.poster-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.poster-card .num {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.poster-card h3 {
+    font-family: var(--font-giant);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 12px 0;
+}
+
+.poster-card p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Подвал постера */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--border-grid);
+    padding-top: 16px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .poster-frame { margin: 8px; padding: 16px; }
+    header { flex-direction: column; gap: 16px; }
+    footer { flex-direction: column; gap: 8px; align-items: flex-start; }
+}    border-bottom: 1px solid var(--border-color);
     padding: 20px 0;
     margin-bottom: 40px;
     background-color: rgba(14, 17, 23, 0.8);
