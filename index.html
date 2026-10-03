@@ -10,10 +10,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=JetBrains+Mono:wght@300;400;700&display=swap');
 
 :root{
-  --bg:#000;
-  --fg:#fff;
-  --dim:#888;
-  --red:#ff2d2d;
+  --bg:#000; --fg:#fff; --dim:#888; --red:#ff2d2d;
   --line:rgba(255,255,255,.15);
   --pad:clamp(20px,5vw,80px);
   --h:'Space Grotesk',system-ui,sans-serif;
@@ -22,150 +19,61 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 html,body{overflow-x:hidden;background:var(--bg);color:var(--fg)}
-body{
-  font-family:var(--m);
-  font-size:15px;
-  line-height:1.55;
-  padding:0 var(--pad);
-  -webkit-font-smoothing:antialiased;
-}
+body{font-family:var(--m);font-size:15px;line-height:1.55;padding:0 var(--pad);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none;transition:color .2s}
 a:hover{color:var(--dim)}
 img{display:block;max-width:100%}
 
-.scanlines{
-  position:fixed;inset:0;pointer-events:none;z-index:100;
-  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);
-  mix-blend-mode:overlay;
-}
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:100;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
 
 /* HERO */
-.hero{
-  min-height:100vh;
-  padding:24px 0 64px;
-  display:flex;flex-direction:column;
-  justify-content:space-between;gap:32px;
-}
-.hero-sys{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:.7rem;letter-spacing:.15em;
-  color:var(--dim);text-transform:uppercase;
-  padding-bottom:16px;border-bottom:1px solid var(--line);
-}
+.hero{min-height:100vh;padding:24px 0 64px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.hero-sys{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;letter-spacing:.15em;color:var(--dim);text-transform:uppercase;padding-bottom:16px;border-bottom:1px solid var(--line)}
 .blink{color:var(--fg)}
 .blink::before{content:"●";margin-right:6px;color:var(--red);animation:blink 1.6s infinite}
 @keyframes blink{50%{opacity:.2}}
 
-.hero-title{
-  font-family:var(--h);
-  font-weight:900;
-  font-size:clamp(4.5rem,22vw,18rem);
-  line-height:.85;
-  letter-spacing:-.05em;
-  text-transform:uppercase;
-  margin:32px 0;
-}
+.hero-title{font-family:var(--h);font-weight:900;font-size:clamp(4.5rem,22vw,18rem);line-height:.85;letter-spacing:-.05em;text-transform:uppercase;margin:32px 0}
 .hero-title span{display:block;overflow:hidden;white-space:nowrap}
-.hero-title .outline{
-  color:transparent;
-  -webkit-text-stroke:2px var(--fg);
-}
+.hero-title .outline{color:transparent;-webkit-text-stroke:2px var(--fg)}
 
-.hero-red{
-  align-self:flex-start;
-  background:var(--red);color:#fff;
-  padding:12px 20px;
-  font-family:var(--h);font-weight:900;
-  font-size:clamp(1.4rem,3.5vw,2.4rem);
-  letter-spacing:-.02em;line-height:1;
-  text-transform:uppercase;
-}
+.hero-red{align-self:flex-start;background:var(--red);color:#fff;padding:12px 20px;font-family:var(--h);font-weight:900;font-size:clamp(1.4rem,3.5vw,2.4rem);letter-spacing:-.02em;line-height:1;text-transform:uppercase}
 .hero-red span{display:block}
 
-.hero-meta{
-  display:flex;flex-wrap:wrap;gap:24px;
-  font-size:.75rem;letter-spacing:.15em;
-  color:var(--dim);text-transform:uppercase;
-  padding:16px 0;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
+.hero-meta{display:flex;flex-wrap:wrap;gap:24px;font-size:.75rem;letter-spacing:.15em;color:var(--dim);text-transform:uppercase;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .hero-meta .yr{margin-left:auto;color:var(--fg)}
 
-.hero-lead{
-  max-width:640px;
-  font-size:clamp(1rem,1.6vw,1.25rem);
-  line-height:1.5;
-}
+.hero-lead{max-width:640px;font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.5}
 .cursor{display:inline-block;animation:blink 1s steps(2) infinite;color:var(--red)}
 
 /* BLOCKS */
 .block{padding:80px 0 64px;border-top:1px solid var(--line)}
 .block-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:48px}
-.num-outline{
-  font-family:var(--h);font-weight:900;
-  font-size:clamp(3rem,10vw,8rem);
-  line-height:.85;
-  color:transparent;-webkit-text-stroke:2px var(--fg);
-  flex-shrink:0;
-}
-.huge{
-  font-family:var(--h);font-weight:900;
-  font-size:clamp(3rem,12vw,10rem);
-  line-height:.85;letter-spacing:-.04em;
-  text-transform:uppercase;
-  flex:1;min-width:0;word-break:break-word;
-}
-.block-text{
-  max-width:720px;margin-left:auto;
-  font-size:.95rem;line-height:1.7;color:var(--dim);
-}
+.num-outline{font-family:var(--h);font-weight:900;font-size:clamp(3rem,10vw,8rem);line-height:.85;color:transparent;-webkit-text-stroke:2px var(--fg);flex-shrink:0}
+.huge{font-family:var(--h);font-weight:900;font-size:clamp(3rem,12vw,10rem);line-height:.85;letter-spacing:-.04em;text-transform:uppercase;flex:1;min-width:0;word-break:break-word}
+.block-text{max-width:720px;margin-left:auto;font-size:.95rem;line-height:1.7;color:var(--dim)}
 
 .chapters{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
-.chapters li{
-  display:flex;gap:16px;align-items:baseline;
-  padding:14px 0;border-bottom:1px solid var(--line);
-  font-size:.95rem;
-}
+.chapters li{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-size:.95rem}
 .chapters li span{font-size:.7rem;letter-spacing:.15em;color:var(--dim);min-width:22px}
 
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 .service{display:flex;flex-direction:column;gap:12px}
-.s-num{
-  font-family:var(--h);font-weight:900;font-size:2.4rem;
-  color:transparent;-webkit-text-stroke:1.5px var(--fg);
-}
-.service h3{
-  font-family:var(--h);font-weight:900;
-  font-size:clamp(1.2rem,2.5vw,1.8rem);
-  letter-spacing:-.02em;text-transform:uppercase;
-}
+.s-num{font-family:var(--h);font-weight:900;font-size:2.4rem;color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+.service h3{font-family:var(--h);font-weight:900;font-size:clamp(1.2rem,2.5vw,1.8rem);letter-spacing:-.02em;text-transform:uppercase}
 .service p{font-size:.85rem;line-height:1.6;color:var(--dim)}
 
 .media{list-style:none}
-.media li{
-  display:flex;align-items:baseline;gap:24px;
-  padding:20px 0;border-bottom:1px solid var(--line);
-  font-size:1.1rem;
-}
+.media li{display:flex;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);font-size:1.1rem}
 .m-num{font-size:.7rem;letter-spacing:.15em;color:var(--dim);min-width:44px}
-.media a{
-  flex:1;font-family:var(--h);font-weight:700;
-  text-transform:uppercase;letter-spacing:.02em;
-}
+.media a{flex:1;font-family:var(--h);font-weight:700;text-transform:uppercase;letter-spacing:.02em}
 .media a:hover{color:var(--fg);text-decoration:underline;text-underline-offset:6px}
 .m-tag{font-size:.7rem;letter-spacing:.15em;color:var(--dim)}
 
 .form{max-width:640px;margin-left:auto;display:flex;flex-direction:column;gap:24px}
 .form-row{display:flex;flex-direction:column;gap:8px}
 .form-row label{font-size:.7rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
-.form-row input,.form-row textarea{
-  background:transparent;border:0;
-  border-bottom:1px solid var(--line);
-  padding:12px 0;
-  font-family:var(--m);font-size:16px;color:var(--fg);
-  resize:vertical;transition:border-color .2s;
-}
+.form-row input,.form-row textarea{background:transparent;border:0;border-bottom:1px solid var(--line);padding:12px 0;font-family:var(--m);font-size:16px;color:var(--fg);resize:vertical;transition:border-color .2s}
 .form-row input:focus,.form-row textarea:focus{outline:none;border-color:var(--fg)}
 .form-row input[aria-invalid="true"],.form-row textarea[aria-invalid="true"]{border-color:var(--red)}
 .form-error{font-size:.7rem;color:var(--red);min-height:1em}
@@ -173,23 +81,10 @@ img{display:block;max-width:100%}
 .form-status[data-state="ok"]{color:var(--fg)}
 .form-status[data-state="error"]{color:var(--red)}
 
-.btn{
-  align-self:flex-start;
-  background:var(--fg);color:var(--bg);border:0;
-  padding:16px 28px;
-  font-family:var(--m);font-weight:700;
-  font-size:.8rem;letter-spacing:.2em;
-  text-transform:uppercase;cursor:pointer;
-  transition:background .2s,color .2s,transform .2s;
-}
+.btn{align-self:flex-start;background:var(--fg);color:var(--bg);border:0;padding:16px 28px;font-family:var(--m);font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,transform .2s}
 .btn:hover{background:var(--red);color:#fff;transform:translate(-2px,-2px)}
 
-.foot{
-  padding:32px 0 24px;border-top:1px solid var(--line);
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
-  font-size:.65rem;letter-spacing:.15em;
-  color:var(--dim);text-transform:uppercase;
-}
+.foot{padding:32px 0 24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:.65rem;letter-spacing:.15em;color:var(--dim);text-transform:uppercase}
 .foot a:hover{color:var(--fg)}
 
 @media (max-width:900px){
@@ -369,8 +264,6 @@ img{display:block;max-width:100%}
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
-
-// Reveal
 document.querySelectorAll('.block, .service, .chapters li, .media li').forEach(el => {
   el.style.opacity = 0;
   el.style.transform = 'translateY(20px)';
@@ -387,7 +280,6 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.block, .service, .chapters li, .media li').forEach(el => io.observe(el));
 
-// Form
 const form = document.getElementById('contact-form');
 if (form) {
   const status = form.querySelector('.form-status');
@@ -444,266 +336,5 @@ if (form) {
   });
 }
 </script>
-</body>
-</html>      <ul class="nav-links">
-        <li><a href="#manifesto" class="active">[01] MANIFESTO</a></li>
-        <li><a href="#philosophy">[02] PHILOSOPHY</a></li>
-        <li><a href="#services">[03] SERVICES</a></li>
-        <li><a href="#media">[04] MEDIA</a></li>
-        <li><a href="#contact">[05] CONTACT</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- ── HERO: название + плашки ── -->
-  <section class="hero" id="manifesto">
-
-    <div class="hero-top">
-      <h1 class="hero-title">LENA&nbsp;SHOUT</h1>
-
-      <div class="hero-badges">
-        <div class="badge-box">HUMAN FUCKTOR</div>
-        <div class="badge-box">PHILOSOPHY</div>
-        <div class="badge-oval">EST. 2022</div>
-      </div>
-    </div>
-
-    <!-- Центральная рамка с визуалом -->
-    <figure class="image-frame">
-      <div class="image-placeholder">
-        [ VISUAL / COMING SOON ]<br>
-        <span>1200 × 600 · ч/б</span>
-      </div>
-      <figcaption class="image-caption">
-        <span>DOC_001 // HUMAN_FUCKTOR.tiff</span>
-        <span>ISO 800 · 1/60s · f/2.8</span>
-      </figcaption>
-    </figure>
-
-    <!-- Двухколоночный сплит под фото -->
-    <div class="split">
-      <div class="split-left">
-        <p class="italic">ORIGINAL<br>HUMAN<br>ARCHIVE</p>
-      </div>
-      <div class="split-right">
-        <p class="big">AUTHENTIC<br>BRUTALIST<br>UNFILTERED</p>
-      </div>
-    </div>
-
-    <!-- Иконки + штрихкод -->
-    <div class="graphics-row">
-      <span class="icon-symbol">✦</span>
-      <span class="barcode">▮▮▯▮▮▮▯▯▮▮▮▯▮▯▮▮▯▮▮▯▯▮▮▮▯▮▯▮▮▯▮▮▯▯▮▮</span>
-      <span class="icon-symbol">✦</span>
-    </div>
-
-    <!-- Описание -->
-    <p class="manifesto-text">
-      Человек — не винтик системы. <strong>Human Fucktor Philosophy</strong> —
-      это выход из лабиринта, возвращение к своему дару и настоящей жизни.
-      Без курсов, без корочек, без иллюзии собственной недостаточности.
-    </p>
-
-  </section>
-
-  <!-- Нижний футер постера -->
-  <footer class="sys-footer">
-    <span>LENA SHOUT / 2022 — ∞</span>
-    <span>PHILOSOPHY &amp; FREEDOM ARCHIVE</span>
-    <span>[ 2026 EDITION ]</span>
-  </footer>
-
-</main>
-
-<!-- ═══════════════════════════════════════════════════════
-     POSTER 02 // PHILOSOPHY
-     ═══════════════════════════════════════════════════════ -->
-<section class="poster-frame" id="philosophy">
-  <span class="corner corner-tl"></span>
-  <span class="corner corner-tr"></span>
-  <span class="corner corner-bl"></span>
-  <span class="corner corner-br"></span>
-
-  <header class="section-head">
-    <span class="num">02 // CORE</span>
-    <h2>PHILOSOPHY</h2>
-    <span class="tag">10 CHAPTERS</span>
-  </header>
-
-  <ol class="chapters">
-    <li><span class="ch-num">01</span> Приматы и космос</li>
-    <li><span class="ch-num">02</span> Wi-Fi и тело-приёмник</li>
-    <li><span class="ch-num">03</span> Лабиринт и фабрика корочек</li>
-    <li><span class="ch-num">04</span> Кризис авторитетов</li>
-    <li><span class="ch-num">05</span> Вытесненный мир</li>
-    <li><span class="ch-num">06</span> Вызов ИИ</li>
-    <li><span class="ch-num">07</span> Семь столпов</li>
-    <li><span class="ch-num">08</span> Договор с телом</li>
-    <li><span class="ch-num">09</span> Деньги как энергия</li>
-    <li><span class="ch-num">10</span> Экология связей</li>
-  </ol>
-
-  <a href="philosophy.html" class="cta">ЧИТАТЬ ПОЛНОСТЬЮ →</a>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     POSTER 03 // SERVICES
-     ═══════════════════════════════════════════════════════ -->
-<section class="poster-frame" id="services">
-  <span class="corner corner-tl"></span>
-  <span class="corner corner-tr"></span>
-  <span class="corner corner-bl"></span>
-  <span class="corner corner-br"></span>
-
-  <header class="section-head">
-    <span class="num">03 // FOR YOU</span>
-    <h2>SERVICES</h2>
-    <span class="tag">3 FORMATS</span>
-  </header>
-
-  <div class="services-grid">
-    <article class="service-card">
-      <div class="service-icon">◉</div>
-      <h3>ИНДИВИДУАЛЬНО</h3>
-      <p>Личное наставничество. Разбор лабиринта, работа с даром и проявленностью.</p>
-      <span class="service-tag">1:1</span>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">✦</div>
-      <h3>ГРУППА</h3>
-      <p>Программы и ретриты. Философские сессии, медитации, диджей-сеты.</p>
-      <span class="service-tag">GROUP</span>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">▮</div>
-      <h3>БИЗНЕС</h3>
-      <p>Консалтинг для предпринимателей. Смысловая архитектура и выход из операционки.</p>
-      <span class="service-tag">B2B</span>
-    </article>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     POSTER 04 // MEDIA
-     ═══════════════════════════════════════════════════════ -->
-<section class="poster-frame" id="media">
-  <span class="corner corner-tl"></span>
-  <span class="corner corner-tr"></span>
-  <span class="corner corner-bl"></span>
-  <span class="corner corner-br"></span>
-
-  <header class="section-head">
-    <span class="num">04 // FILES</span>
-    <h2>MEDIA</h2>
-    <span class="tag">ARCHIVE</span>
-  </header>
-
-  <ul class="media-list">
-    <li><span class="m-num">01</span> <a href="https://open.spotify.com/artist/0pJsxy4s1DE1wV0tOyntlk" target="_blank" rel="noopener">SPOTIFY</a> <span class="m-tag">music</span></li>
-    <li><span class="m-num">02</span> <a href="https://insighttimer.com/lenashout" target="_blank" rel="noopener">INSIGHT TIMER</a> <span class="m-tag">meditations</span></li>
-    <li><span class="m-num">03</span> <a href="https://promodj.com/lenashout" target="_blank" rel="noopener">PROMODJ</a> <span class="m-tag">dj · mixes</span></li>
-  </ul>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     POSTER 05 // CONTACT
-     ═══════════════════════════════════════════════════════ -->
-<section class="poster-frame" id="contact">
-  <span class="corner corner-tl"></span>
-  <span class="corner corner-tr"></span>
-  <span class="corner corner-bl"></span>
-  <span class="corner corner-br"></span>
-
-  <header class="section-head">
-    <span class="num">05 // SIGNAL</span>
-    <h2>CONTACT</h2>
-    <span class="tag">FORM</span>
-  </header>
-
-  <form class="form" id="contact-form" novalidate>
-    <div class="form-row">
-      <label for="name">ИМЯ</label>
-      <input id="name" name="name" type="text" required minlength="2" placeholder="ваше имя" autocomplete="name" />
-      <span class="form-error" data-for="name"></span>
-    </div>
-
-    <div class="form-row">
-      <label for="email">EMAIL</label>
-      <input id="email" name="email" type="email" required placeholder="you@domain.com" autocomplete="email" inputmode="email" />
-      <span class="form-error" data-for="email"></span>
-    </div>
-
-    <div class="form-row">
-      <label for="message">С ЧЕМ ПРИШЛИ</label>
-      <textarea id="message" name="message" rows="4" required minlength="10" placeholder="коротко о запросе"></textarea>
-      <span class="form-error" data-for="message"></span>
-    </div>
-
-    <button type="submit" class="btn-primary">
-      <span>ОТПРАВИТЬ →</span>
-    </button>
-
-    <p class="form-status" role="status" aria-live="polite"></p>
-  </form>
-
-  <footer class="sys-footer">
-    <span>© <span id="year"></span> LENA SHOUT</span>
-    <span>
-      <a href="legal/privacy.html">ПОЛИТИКА</a> ·
-      <a href="legal/terms.html">ОФЕРТА</a> ·
-      <a href="legal/cookies.html">COOKIES</a>
-    </span>
-    <span>LENA SHOUT / 2022 — ∞</span>
-  </footer>
-</section>
-
-<script src="js/script.js" defer></script>
-</body>
-</html>            <div class="poster-caption" style="margin-left: auto; text-align: right;">
-                НАСТОЯЩАЯ ФИЛОСОФИЯ ДАЕТ ОБЛЕГЧЕНИЕ И ОСВОБОЖДЕНИЕ. ВЫХОД ИЗ МАТРИЦЫ Восприятия.
-            </div>
-
-            <!-- Карточки в стиле швейцарского плаката -->
-            <div class="poster-grid">
-                <a href="philosophy.html" class="poster-card">
-                    <span class="num">01 // CORE</span>
-                    <h3>PHILOSOPHY</h3>
-                    <p>Разбор структуры восприятия и путей освобождения.</p>
-                </a>
-                <a href="evidence.html" class="poster-card">
-                    <span class="num">02 // DATA</span>
-                    <h3>RESEARCH</h3>
-                    <p>Исследования, наука и реальные кейсы людей.</p>
-                </a>
-                <a href="media.html" class="poster-card">
-                    <span class="num">03 // FILES</span>
-                    <h3>MEDIA ARCHIVE</h3>
-                    <p>Звук, эмбиент, книги, документы, видео.</p>
-                </a>
-            </div>
-        </main>
-
-        <!-- Нижний футер с метками -->
-        <footer>
-            <div>USER_001 ACCESS GRANTED</div>
-            <div>PHILOSOPHY & FREEDOM ARCHIVE</div>
-            <div>[ 2026 EDITION ]</div>
-        </footer>
-
-    </div>
-</body>
-</html>        <p class="lead">Очень многие люди являются заложниками лабиринта и страдают от того, что не могут проживать свою жизнь. Эта философия создана, чтобы дать облегчение и свободу.</p>
-
-        <section>
-            <h2>Главная идея</h2>
-            <p>Здесь будет краткое введение в твою философию. Описание того, как человек может выйти из замкнутого круга и наладить восприятие себя и мира.</p>
-        </section>
-
-        <footer>
-            <p>© Личный сайт и философия</p>
-        </footer>
-    </main>
 </body>
 </html>
