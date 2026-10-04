@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#000000" />
-<title>LENA SHOUT — Human Fucktor Philosophy</title>
-<meta name="description" content="LENA SHOUT — философ, исследователь, трансформационный тренер. Human Fucktor Philosophy — выход из лабиринта к своему дару." />
+<title>LENA SHOUT — философ · исследователь · тренер</title>
+<meta name="description" content="LENA SHOUT — философ, исследователь, трансформационный тренер. SHOUT Philosophy — мир как игра, выход из лабиринта." />
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=JetBrains+Mono:wght@300;400;700&display=swap');
 
@@ -28,83 +28,149 @@ img{display:block;max-width:100%}
 
 /* HERO */
 .hero{min-height:100vh;padding:24px 0 64px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
-.hero-sys{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;letter-spacing:.15em;color:var(--dim);text-transform:uppercase;padding-bottom:16px;border-bottom:1px solid var(--line)}
-.blink{color:var(--fg)}
-.blink::before{content:"●";margin-right:6px;color:var(--red);animation:blink 1.6s infinite}
+
+/* СТАТУС СВЕРХУ — про посетителя */
+.hero-status{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;flex-wrap:wrap;
+  font-size:.8rem;letter-spacing:.18em;
+  text-transform:uppercase;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+  color:var(--dim);
+}
+.hero-status .online{
+  color:var(--red);font-weight:700;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-status .online::before{
+  content:"";width:8px;height:8px;background:var(--red);
+  border-radius:50%;box-shadow:0 0 10px var(--red);
+  animation:pulse 1.6s infinite;
+}
+@keyframes pulse{50%{opacity:.3}}
 @keyframes blink{50%{opacity:.2}}
 
-.hero-title{font-family:var(--h);font-weight:900;font-size:clamp(4.5rem,22vw,18rem);line-height:.85;letter-spacing:-.05em;text-transform:uppercase;margin:32px 0}
+.hero-title{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(4rem,16vw,14rem);
+  line-height:.85;letter-spacing:-.05em;
+  text-transform:uppercase;margin:32px 0 0;
+}
 .hero-title span{display:block;overflow:hidden;white-space:nowrap}
 .hero-title .outline{color:transparent;-webkit-text-stroke:2px var(--fg)}
 
-.hero-red{align-self:flex-start;background:var(--red);color:#fff;padding:12px 20px;font-family:var(--h);font-weight:900;font-size:clamp(1.4rem,3.5vw,2.4rem);letter-spacing:-.02em;line-height:1;text-transform:uppercase}
-.hero-red span{display:block}
+.hero-subtitle{
+  font-family:var(--m);
+  font-size:clamp(.8rem,1.2vw,1rem);
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--dim);
+  margin-top:24px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
+.hero-subtitle .sep{opacity:.4;margin:0 12px}
 
-.hero-meta{display:flex;flex-wrap:wrap;gap:24px;font-size:.75rem;letter-spacing:.15em;color:var(--dim);text-transform:uppercase;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.hero-meta .yr{margin-left:auto;color:var(--fg)}
+/* ЛИД — манифест в трёх строках */
+.hero-lead{
+  max-width:680px;
+  font-size:clamp(1.05rem,1.7vw,1.35rem);
+  line-height:1.55;
+}
+.hero-lead .line{display:block}
+.hero-lead .accent{color:var(--red)}
+.cursor{
+  display:inline-block;
+  color:var(--red);
+  animation:blink 1s steps(2) infinite;
+  margin-left:4px;
+}
 
-.hero-lead{max-width:640px;font-size:clamp(1rem,1.6vw,1.25rem);line-height:1.5}
-.cursor{display:inline-block;animation:blink 1s steps(2) infinite;color:var(--red)}
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  padding:80px 0 64px;
+  border-top:1px solid var(--line);
+}
+.card{
+  display:flex;flex-direction:column;
+  border:1px solid var(--line);
+  background:#050505;
+  transition:border-color .25s, transform .25s;
+  text-decoration:none;
+  color:inherit;
+}
+.card:hover{border-color:var(--fg);transform:translateY(-4px)}
+.card:hover .card-arrow{transform:translateX(6px)}
+
+.card-image{
+  aspect-ratio:1/1;
+  background:#0a0a0a;
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+.card-image::after{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);
+  pointer-events:none;
+}
+.card-image .glyph{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(3rem,6vw,5rem);
+  color:transparent;-webkit-text-stroke:1.5px var(--fg);
+  line-height:1;
+}
+
+.card-body{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card-num{font-size:.7rem;letter-spacing:.2em;color:var(--dim)}
+.card-title{font-family:var(--h);font-weight:900;font-size:clamp(1.3rem,2.2vw,1.8rem);letter-spacing:-.02em;line-height:1;text-transform:uppercase}
+.card-desc{font-size:.8rem;line-height:1.6;color:var(--dim);flex:1}
+.card-arrow{font-family:var(--m);font-size:.75rem;letter-spacing:.2em;color:var(--fg);text-transform:uppercase;margin-top:8px;transition:transform .25s}
 
 /* BLOCKS */
 .block{padding:80px 0 64px;border-top:1px solid var(--line)}
 .block-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:48px}
-.num-outline{font-family:var(--h);font-weight:900;font-size:clamp(3rem,10vw,8rem);line-height:.85;color:transparent;-webkit-text-stroke:2px var(--fg);flex-shrink:0}
-.huge{font-family:var(--h);font-weight:900;font-size:clamp(3rem,12vw,10rem);line-height:.85;letter-spacing:-.04em;text-transform:uppercase;flex:1;min-width:0;word-break:break-word}
-.block-text{max-width:720px;margin-left:auto;font-size:.95rem;line-height:1.7;color:var(--dim)}
-
-.chapters{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
-.chapters li{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-size:.95rem}
-.chapters li span{font-size:.7rem;letter-spacing:.15em;color:var(--dim);min-width:22px}
-
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.service{display:flex;flex-direction:column;gap:12px}
-.s-num{font-family:var(--h);font-weight:900;font-size:2.4rem;color:transparent;-webkit-text-stroke:1.5px var(--fg)}
-.service h3{font-family:var(--h);font-weight:900;font-size:clamp(1.2rem,2.5vw,1.8rem);letter-spacing:-.02em;text-transform:uppercase}
-.service p{font-size:.85rem;line-height:1.6;color:var(--dim)}
-
-.media{list-style:none}
-.media li{display:flex;align-items:baseline;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);font-size:1.1rem}
-.m-num{font-size:.7rem;letter-spacing:.15em;color:var(--dim);min-width:44px}
-.media a{flex:1;font-family:var(--h);font-weight:700;text-transform:uppercase;letter-spacing:.02em}
-.media a:hover{color:var(--fg);text-decoration:underline;text-underline-offset:6px}
-.m-tag{font-size:.7rem;letter-spacing:.15em;color:var(--dim)}
+.num-outline{font-family:var(--h);font-weight:900;font-size:clamp(2.5rem,7vw,6rem);line-height:.85;color:transparent;-webkit-text-stroke:2px var(--fg);flex-shrink:0}
+.huge{font-family:var(--h);font-weight:900;font-size:clamp(2.5rem,8vw,7rem);line-height:.85;letter-spacing:-.04em;text-transform:uppercase;flex:1;min-width:0;word-break:break-word}
 
 .form{max-width:640px;margin-left:auto;display:flex;flex-direction:column;gap:24px}
 .form-row{display:flex;flex-direction:column;gap:8px}
 .form-row label{font-size:.7rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
 .form-row input,.form-row textarea{background:transparent;border:0;border-bottom:1px solid var(--line);padding:12px 0;font-family:var(--m);font-size:16px;color:var(--fg);resize:vertical;transition:border-color .2s}
 .form-row input:focus,.form-row textarea:focus{outline:none;border-color:var(--fg)}
-.form-row input[aria-invalid="true"],.form-row textarea[aria-invalid="true"]{border-color:var(--red)}
 .form-error{font-size:.7rem;color:var(--red);min-height:1em}
 .form-status{font-size:.75rem;color:var(--dim);min-height:1em}
-.form-status[data-state="ok"]{color:var(--fg)}
-.form-status[data-state="error"]{color:var(--red)}
 
 .btn{align-self:flex-start;background:var(--fg);color:var(--bg);border:0;padding:16px 28px;font-family:var(--m);font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,transform .2s}
 .btn:hover{background:var(--red);color:#fff;transform:translate(-2px,-2px)}
+
+.social{list-style:none;display:flex;flex-wrap:wrap;gap:24px;margin-top:32px}
+.social a{font-family:var(--h);font-weight:700;text-transform:uppercase;letter-spacing:.02em;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.social a:hover{color:var(--fg);border-color:var(--fg)}
 
 .foot{padding:32px 0 24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:.65rem;letter-spacing:.15em;color:var(--dim);text-transform:uppercase}
 .foot a:hover{color:var(--fg)}
 
 @media (max-width:900px){
-  .chapters{grid-template-columns:1fr;gap:0}
-  .services{grid-template-columns:1fr;gap:24px}
-  .hero-meta .yr{margin-left:0}
+  .cards{grid-template-columns:1fr;gap:20px}
 }
 @media (max-width:600px){
   body{font-size:14px}
   .hero{min-height:auto;padding-top:16px}
   .hero-title{font-size:clamp(3rem,22vw,6rem);letter-spacing:-.04em}
   .hero-title .outline{-webkit-text-stroke:1.5px var(--fg)}
-  .hero-red{font-size:1.1rem;padding:10px 14px}
+  .hero-subtitle{font-size:.7rem;letter-spacing:.2em}
+  .hero-subtitle .sep{margin:0 6px}
+  .hero-status{font-size:.7rem;letter-spacing:.12em}
   .block{padding:56px 0 44px}
   .num-outline{-webkit-text-stroke:1.5px var(--fg)}
   .huge{font-size:clamp(2.5rem,14vw,5rem)}
-  .block-text,.form{margin-left:0}
-  .media li{flex-wrap:wrap;gap:8px}
-  .media a{min-width:100%;order:2}
-  .m-tag{order:3}
+  .form{margin-left:0}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -116,9 +182,9 @@ img{display:block;max-width:100%}
 <div class="scanlines"></div>
 
 <header class="hero" id="top">
-  <div class="hero-sys">
-    <span>SYS_001 // SYSTEM UNLOCKED</span>
-    <span class="blink">ONLINE</span>
+  <div class="hero-status">
+    <span>PLAYER_<span id="player-id">001</span> // CONNECTION ESTABLISHED</span>
+    <span class="online">ONLINE</span>
   </div>
 
   <h1 class="hero-title">
@@ -126,111 +192,57 @@ img{display:block;max-width:100%}
     <span class="outline">SHOUT</span>
   </h1>
 
-  <div class="hero-red">
-    <span>HUMAN FUCKTOR</span>
-    <span>PHILOSOPHY</span>
-  </div>
-
-  <div class="hero-meta">
-    <span>[01] PHILOSOPHER</span>
-    <span>[02] RESEARCHER</span>
-    <span>[03] COACH</span>
-    <span class="yr">EST. 2022</span>
-  </div>
+  <p class="hero-subtitle">
+    Философ<span class="sep">·</span>Исследователь<span class="sep">·</span>Тренер
+  </p>
 
   <p class="hero-lead">
-    Человек — не винтик системы.<br>
-    Выход из лабиринта начинается здесь.
-    <span class="cursor">_</span>
+    <span class="line">Мир — игра. Мы в ней NPC.</span>
+    <span class="line accent">SHOUT перепрошивает код.</span>
+    <span class="line">Теперь ты — главный герой.<span class="cursor">_</span></span>
   </p>
 </header>
 
-<section class="block" id="manifesto">
-  <div class="block-head">
-    <span class="num-outline">01.</span>
-    <h2 class="huge">МАНИФЕСТ</h2>
-  </div>
-  <p class="block-text">
-    Система внушила тебе, что твоей природы недостаточно.
-    Ты тратишь годы на курсы и корочки, кормишь инфо-индустрию
-    и ждёшь разрешения быть собой. Пока ты сомневаешься —
-    пустые люди с дипломами уверенно калечат чужие судьбы.
-    Хватит искать разрешения у лабиринта.
-  </p>
-</section>
+<section class="cards">
 
-<section class="block" id="philosophy">
-  <div class="block-head">
-    <span class="num-outline">02.</span>
-    <h2 class="huge">ФИЛОСОФИЯ</h2>
-  </div>
-  <ol class="chapters">
-    <li><span>01</span> Приматы и космос</li>
-    <li><span>02</span> Wi-Fi и тело-приёмник</li>
-    <li><span>03</span> Лабиринт и фабрика корочек</li>
-    <li><span>04</span> Кризис авторитетов</li>
-    <li><span>05</span> Вытесненный мир</li>
-    <li><span>06</span> Вызов ИИ</li>
-    <li><span>07</span> Семь столпов</li>
-    <li><span>08</span> Договор с телом</li>
-    <li><span>09</span> Деньги как энергия</li>
-    <li><span>10</span> Экология связей</li>
-  </ol>
-</section>
+  <a href="philosophy.html" class="card">
+    <div class="card-image"><span class="glyph">01</span></div>
+    <div class="card-body">
+      <span class="card-num">01 // CORE</span>
+      <h3 class="card-title">ФИЛОСОФИЯ</h3>
+      <p class="card-desc">SHOUT Philosophy. Мир как игра, теория игр, институты, выход из лабиринта.</p>
+      <span class="card-arrow">ОТКРЫТЬ →</span>
+    </div>
+  </a>
 
-<section class="block" id="services">
-  <div class="block-head">
-    <span class="num-outline">03.</span>
-    <h2 class="huge">УСЛУГИ</h2>
-  </div>
-  <div class="services">
-    <div class="service">
-      <span class="s-num">01.</span>
-      <h3>ИНДИВИДУАЛЬНО</h3>
-      <p>Личное наставничество. Разбор лабиринта, работа с даром и проявленностью.</p>
+  <a href="method.html" class="card">
+    <div class="card-image"><span class="glyph">02</span></div>
+    <div class="card-body">
+      <span class="card-num">02 // METHOD</span>
+      <h3 class="card-title">МЕТОДОЛОГИЯ</h3>
+      <p class="card-desc">Как я работаю. Форматы, услуги, что ты получаешь на выходе.</p>
+      <span class="card-arrow">ОТКРЫТЬ →</span>
     </div>
-    <div class="service">
-      <span class="s-num">02.</span>
-      <h3>ГРУППА</h3>
-      <p>Программы, ретриты, философские сессии. Медитации и диджей-сеты.</p>
-    </div>
-    <div class="service">
-      <span class="s-num">03.</span>
-      <h3>БИЗНЕС</h3>
-      <p>Консалтинг для предпринимателей. Смысловая архитектура, выход из операционки.</p>
-    </div>
-  </div>
-</section>
+  </a>
 
-<section class="block" id="media">
-  <div class="block-head">
-    <span class="num-outline">04.</span>
-    <h2 class="huge">МЕДИА</h2>
-  </div>
-  <ul class="media">
-    <li>
-      <span class="m-num">[01]</span>
-      <a href="https://open.spotify.com/artist/0pJsxy4s1DE1wV0tOyntlk" target="_blank" rel="noopener">SPOTIFY</a>
-      <span class="m-tag">music</span>
-    </li>
-    <li>
-      <span class="m-num">[02]</span>
-      <a href="https://insighttimer.com/lenashout" target="_blank" rel="noopener">INSIGHT TIMER</a>
-      <span class="m-tag">meditations</span>
-    </li>
-    <li>
-      <span class="m-num">[03]</span>
-      <a href="https://promodj.com/lenashout" target="_blank" rel="noopener">PROMODJ</a>
-      <span class="m-tag">dj · mixes</span>
-    </li>
-  </ul>
+  <a href="results.html" class="card">
+    <div class="card-image"><span class="glyph">03</span></div>
+    <div class="card-body">
+      <span class="card-num">03 // PROOF</span>
+      <h3 class="card-title">РЕЗУЛЬТАТЫ</h3>
+      <p class="card-desc">Кейсы, отзывы, реальные истории. Без воды и инфоцыганства.</p>
+      <span class="card-arrow">ОТКРЫТЬ →</span>
+    </div>
+  </a>
+
 </section>
 
 <section class="block" id="contact">
   <div class="block-head">
-    <span class="num-outline">05.</span>
+    <span class="num-outline">04.</span>
     <h2 class="huge">КОНТАКТ</h2>
   </div>
+
   <form class="form" id="contact-form" novalidate>
     <div class="form-row">
       <label for="name">ИМЯ</label>
@@ -250,6 +262,13 @@ img{display:block;max-width:100%}
     <button type="submit" class="btn">ОТПРАВИТЬ →</button>
     <p class="form-status" role="status" aria-live="polite"></p>
   </form>
+
+  <ul class="social">
+    <li><a href="https://open.spotify.com/artist/0pJsxy4s1DE1wV0tOyntlk" target="_blank" rel="noopener">Spotify</a></li>
+    <li><a href="https://insighttimer.com/lenashout" target="_blank" rel="noopener">Insight Timer</a></li>
+    <li><a href="https://promodj.com/lenashout" target="_blank" rel="noopener">PromoDJ</a></li>
+    <li><a href="mailto:hi@lenashout.com">Email</a></li>
+  </ul>
 </section>
 
 <footer class="foot">
@@ -259,15 +278,19 @@ img{display:block;max-width:100%}
     <a href="legal/terms.html">TERMS</a> ·
     <a href="legal/cookies.html">COOKIES</a>
   </span>
-  <span>HUMAN FUCKTOR PHILOSOPHY / 2022 — ∞</span>
+  <span>SHOUT PHILOSOPHY / 2022 — ∞</span>
 </footer>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
-document.querySelectorAll('.block, .service, .chapters li, .media li').forEach(el => {
+
+const playerId = String(Math.floor(Math.random() * 999) + 1).padStart(3, '0');
+document.getElementById('player-id').textContent = playerId;
+
+document.querySelectorAll('.card').forEach((el, i) => {
   el.style.opacity = 0;
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity .7s ease, transform .7s ease';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity .7s ease ' + (i * 0.1) + 's, transform .7s ease ' + (i * 0.1) + 's';
 });
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -277,8 +300,8 @@ const io = new IntersectionObserver(entries => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.block, .service, .chapters li, .media li').forEach(el => io.observe(el));
+}, { threshold: 0.1 });
+document.querySelectorAll('.card').forEach(el => io.observe(el));
 
 const form = document.getElementById('contact-form');
 if (form) {
@@ -314,11 +337,11 @@ if (form) {
     if (firstInvalid) {
       firstInvalid.focus();
       status.textContent = '// проверь поля ↑';
-      status.dataset.state = 'error';
+      status.style.color = '#ff2d2d';
       return;
     }
-    status.dataset.state = '';
     status.textContent = '// отправка…';
+    status.style.color = '#888';
     try {
       const res = await fetch('https://formspree.io/f/xxxxxxx', {
         method: 'POST',
@@ -328,10 +351,10 @@ if (form) {
       if (!res.ok) throw new Error();
       form.reset();
       status.textContent = '// принято. отвечу в течение 24ч.';
-      status.dataset.state = 'ok';
+      status.style.color = '#fff';
     } catch {
       status.textContent = '// ошибка. напиши на hi@lenashout.com';
-      status.dataset.state = 'error';
+      status.style.color = '#ff2d2d';
     }
   });
 }
