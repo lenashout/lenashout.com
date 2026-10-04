@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#000000" />
+<title>Реквизиты — LENA SHOUT</title>
+<meta name="description" content="Реквизиты ИП Шаут Елена Владимировна. LENA SHOUT." />
+<meta name="robots" content="index, follow" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=JetBrains+Mono:wght@300;400;700&display=swap');
+
+:root{
+  --bg:#000; --fg:#fff; --dim:#888; --red:#ff2d2d;
+  --line:rgba(255,255,255,.15);
+  --pad:clamp(20px,5vw,80px);
+  --h:'Space Grotesk',system-ui,sans-serif;
+  --m:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden;background:var(--bg);color:var(--fg)}
+body{font-family:var(--m);font-size:15px;line-height:1.6;padding:0 var(--pad);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none;transition:color .2s}
+a:hover{color:var(--dim)}
+
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:100;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+
+/* ШАПКА */
+.top{
+  padding:24px 0 16px;
+  border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;flex-wrap:wrap;
+  font-size:.75rem;letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--dim);
+  margin-bottom:48px;
+}
+.top a{color:var(--fg)}
+.top a:hover{color:var(--red)}
+.top .page-title{color:var(--dim)}
+
+/* ЗАГОЛОВОК */
+.page-head{margin-bottom:64px}
+.page-head .num{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(2.5rem,7vw,6rem);
+  line-height:.85;
+  color:transparent;-webkit-text-stroke:2px var(--fg);
+  margin-bottom:8px;
+}
+.page-head h1{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(2.5rem,9vw,7rem);
+  line-height:.85;letter-spacing:-.04em;
+  text-transform:uppercase;
+}
+
+/* РЕКВИЗИТЫ */
+.req-block{
+  margin-bottom:64px;
+}
+.req-block h2{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(1.4rem,2.5vw,2rem);
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--line);
+}
+.req-list{
+  display:grid;
+  grid-template-columns:minmax(180px, 240px) 1fr;
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.req-list > div{
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  font-size:.85rem;
+}
+.req-list .label{
+  color:var(--dim);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-size:.7rem;
+  padding-right:24px;
+}
+.req-list .value{
+  color:var(--fg);
+  font-family:var(--m);
+  word-break:break-word;
+}
+.req-list .value.mono{
+  letter-spacing:.02em;
+}
+
+/* ФУТЕР */
+.foot{
+  margin-top:80px;
+  padding:28px 0 24px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;text-align:center;
+  font-size:.65rem;letter-spacing:.12em;
+  color:var(--dim);text-transform:uppercase;
+}
+.foot-center{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.foot-center a{color:var(--fg)}
+.foot-center a:hover{color:var(--red)}
+.foot-center .sep{color:var(--dim)}
+
+@media (max-width:700px){
+  .req-list{grid-template-columns:1fr}
+  .req-list .label{padding-bottom:2px;border-bottom:0}
+  .req-list > div{padding:10px 0}
+  .req-list .label{padding-top:14px;border-top:1px solid var(--line)}
+  .req-list .label:first-child{border-top:0}
+}
+@media (max-width:600px){
+  body{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<header class="top">
+  <a href="../index.html">← На главную</a>
+  <span class="page-title">Legal / Requisites</span>
+</header>
+
+<main>
+  <div class="page-head">
+    <div class="num">LEGAL_01.</div>
+    <h1>Реквизиты</h1>
+  </div>
+
+  <!-- ИП -->
+  <section class="req-block">
+    <h2>Индивидуальный предприниматель</h2>
+    <div class="req-list">
+      <div class="label">Наименование</div>
+      <div class="value">Индивидуальный предприниматель Шаут Елена Владимировна</div>
+
+      <div class="label">ИНН</div>
+      <div class="value mono">163204471090</div>
+
+      <div class="label">ОГРНИП</div>
+      <div class="value mono">326169000227040</div>
+    </div>
+  </section>
+
+  <!-- Банк -->
+  <section class="req-block">
+    <h2>Банковские реквизиты</h2>
+    <div class="req-list">
+      <div class="label">Наименование банка</div>
+      <div class="value">ООО «Банк Точка»</div>
+
+      <div class="label">Расчётный счёт</div>
+      <div class="value mono">40802810120001183695</div>
+
+      <div class="label">БИК</div>
+      <div class="value mono">044525104</div>
+
+      <div class="label">ИНН банка</div>
+      <div class="value mono">9721194461</div>
+
+      <div class="label">Корр. счёт</div>
+      <div class="value mono">30101810745374525104</div>
+
+      <div class="label">Юр. адрес банка</div>
+      <div class="value">109044, Российская Федерация, г. Москва, вн.тер.г. муниципальный округ Южнопортовый, пер. 3-й Крутицкий, д. 11, помещ. 7Н</div>
+    </div>
+  </section>
+
+  <!-- Контакт -->
+  <section class="req-block">
+    <h2>Контакт</h2>
+    <div class="req-list">
+      <div class="label">Email</div>
+      <div class="value"><a href="mailto:hi@lenashout.com">hi@lenashout.com</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>© 2022–<span id="year">2026</span> LENA SHOUT. Все права защищены.</span>
+  <span class="foot-center">
+    <a href="requisites.html">Реквизиты</a>
+    <span class="sep">·</span>
+    <a href="terms.html">Оферта</a>
+    <span class="sep">·</span>
+    <a href="privacy.html">Политика</a>
+  </span>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
