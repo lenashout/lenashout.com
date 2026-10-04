@@ -4,9 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#000000" />
+
 <title>LENA SHOUT — философ · исследователь · тренер</title>
 <meta name="description" content="LENA SHOUT — философ, исследователь, трансформационный тренер. SHOUT Philosophy — мир как игра, выход из лабиринта." />
-<style><meta property="og:type" content="website" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
 <meta property="og:title" content="LENA SHOUT — философ · исследователь · тренер" />
 <meta property="og:description" content="SHOUT перепрошивает код. Теперь ты — главный герой." />
 <meta property="og:url" content="https://lenashout.com/" />
@@ -15,11 +18,18 @@
 <meta property="og:image:height" content="924" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:site_name" content="LENA SHOUT" />
+<meta property="og:locale" content="ru_RU" />
 
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="LENA SHOUT — философ · исследователь · тренер" />
 <meta name="twitter:description" content="SHOUT перепрошивает код. Теперь ты — главный герой." />
 <meta name="twitter:image" content="https://lenashout.com/assets/og-image.png" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=JetBrains+Mono:wght@300;400;700&display=swap');
 
 :root{
@@ -111,7 +121,6 @@ img{display:block;max-width:100%}
 .card:hover{border-color:var(--fg);transform:translateY(-4px)}
 .card:hover .card-arrow{transform:translateX(6px)}
 
-/* КВАДРАТ С КАРТИНКОЙ */
 .card-image{
   aspect-ratio:1/1;
   background:#0a0a0a;
@@ -120,8 +129,7 @@ img{display:block;max-width:100%}
   overflow:hidden;
 }
 .card-image img{
-  width:100%;
-  height:100%;
+  width:100%;height:100%;
   object-fit:cover;
   filter:grayscale(100%) contrast(1.1) brightness(.95);
   transition:filter .3s ease, transform .4s ease;
@@ -145,11 +153,9 @@ img{display:block;max-width:100%}
 }
 .contact-lead{
   max-width:900px;
-  font-family:var(--h);
-  font-weight:900;
+  font-family:var(--h);font-weight:900;
   font-size:clamp(1.6rem,3.5vw,3rem);
-  line-height:1.15;
-  letter-spacing:-.02em;
+  line-height:1.15;letter-spacing:-.02em;
 }
 .contact-lead .accent{color:var(--red)}
 
@@ -238,9 +244,7 @@ img{display:block;max-width:100%}
 <section class="cards">
 
   <a href="philosophy.html" class="card">
-    <div class="card-image">
-      <img src="assets/philosophy.jpg" alt="Философия" />
-    </div>
+    <div class="card-image"><img src="assets/philosophy.jpg" alt="Философия" /></div>
     <div class="card-body">
       <span class="card-num">01 // CORE</span>
       <h3 class="card-title">ФИЛОСОФИЯ</h3>
@@ -250,9 +254,7 @@ img{display:block;max-width:100%}
   </a>
 
   <a href="method.html" class="card">
-    <div class="card-image">
-      <img src="assets/method.jpg" alt="Методология" />
-    </div>
+    <div class="card-image"><img src="assets/method.jpg" alt="Методология" /></div>
     <div class="card-body">
       <span class="card-num">02 // METHOD</span>
       <h3 class="card-title">МЕТОДОЛОГИЯ</h3>
@@ -262,9 +264,7 @@ img{display:block;max-width:100%}
   </a>
 
   <a href="results.html" class="card">
-    <div class="card-image">
-      <img src="assets/results.jpg" alt="Результаты" />
-    </div>
+    <div class="card-image"><img src="assets/results.jpg" alt="Результаты" /></div>
     <div class="card-body">
       <span class="card-num">03 // PROOF</span>
       <h3 class="card-title">РЕЗУЛЬТАТЫ</h3>
@@ -292,7 +292,7 @@ img{display:block;max-width:100%}
     </li>
 
     <li>
-      <a href="mailto:hi@lenashout.com" aria-label="Email">
+      <a href="mailto:shout@ya.ru" aria-label="Email">
         <span class="icon-box">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
         </span>
@@ -332,7 +332,6 @@ img{display:block;max-width:100%}
 
 <footer class="foot">
   <span class="foot-left">© 2022–<span id="year">2026</span> LENA SHOUT. Все права защищены.</span>
-
   <span class="foot-center">
     <a href="legal/requisites.html">Реквизиты</a>
     <span class="sep">·</span>
@@ -344,25 +343,8 @@ img{display:block;max-width:100%}
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
-
 const playerId = String(Math.floor(Math.random() * 999) + 1).padStart(3, '0');
 document.getElementById('player-id').textContent = playerId;
-
-document.querySelectorAll('.card').forEach((el, i) => {
-  el.style.opacity = 0;
-  el.style.transform = 'translateY(24px)';
-  el.style.transition = 'opacity .7s ease ' + (i * 0.1) + 's, transform .7s ease ' + (i * 0.1) + 's';
-});
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.opacity = 1;
-      e.target.style.transform = 'none';
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.card').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
