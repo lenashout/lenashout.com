@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#000000" />
+<title>Результаты — LENA SHOUT</title>
+<meta name="description" content="Результаты работы LENA SHOUT: кейсы, цифры, проекты. От продаж и B2B до B2G, обучения и цифровизации." />
+<meta name="robots" content="index, follow" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=JetBrains+Mono:wght@300;400;700&display=swap');
+
+:root{
+  --bg:#000; --fg:#fff; --dim:#888; --red:#ff2d2d;
+  --line:rgba(255,255,255,.15);
+  --pad:clamp(20px,5vw,80px);
+  --h:'Space Grotesk',system-ui,sans-serif;
+  --m:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden;background:var(--bg);color:var(--fg)}
+body{font-family:var(--m);font-size:15px;line-height:1.7;padding:0 var(--pad);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none;transition:color .2s}
+a:hover{color:var(--dim)}
+
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:100;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+
+.top{
+  padding:24px 0 16px;border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;flex-wrap:wrap;
+  font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:64px;
+}
+.top a{color:var(--fg)}
+.top a:hover{color:var(--red)}
+.top .page-title{color:var(--dim)}
+
+.page-head{margin-bottom:80px}
+.page-head .num{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(2.5rem,7vw,6rem);
+  line-height:.85;color:transparent;-webkit-text-stroke:2px var(--fg);
+  margin-bottom:16px;
+}
+.page-head h1{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(2.5rem,10vw,8rem);
+  line-height:.85;letter-spacing:-.05em;text-transform:uppercase;
+  margin-bottom:32px;
+}
+.page-head .subtitle{
+  max-width:820px;
+  font-family:var(--h);font-weight:700;
+  font-size:clamp(1rem,1.6vw,1.25rem);
+  line-height:1.4;color:var(--red);
+  letter-spacing:-.01em;
+}
+
+/* Крупные цифры */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:24px;margin:64px 0 80px;
+  padding:32px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.stat{display:flex;flex-direction:column;gap:8px}
+.stat .num-big{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(2rem,5vw,3.5rem);
+  line-height:1;letter-spacing:-.03em;
+  color:var(--fg);
+}
+.stat .num-big .red{color:var(--red)}
+.stat .label{
+  font-size:.7rem;letter-spacing:.15em;
+  color:var(--dim);text-transform:uppercase;
+}
+
+/* Тело */
+.manifesto{max-width:820px}
+.manifesto > p{margin-bottom:16px;color:var(--fg)}
+.manifesto > p.muted{color:var(--dim)}
+.manifesto strong{font-weight:700;color:var(--fg)}
+.manifesto em{font-style:italic;color:var(--dim)}
+
+/* Кейс */
+.case{
+  margin:64px 0;
+  padding:32px 28px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.015);
+}
+.case .case-num{
+  font-size:.7rem;letter-spacing:.2em;
+  color:var(--red);margin-bottom:12px;
+}
+.case h2{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(1.3rem,2.6vw,2rem);
+  line-height:1.1;letter-spacing:-.02em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+.case p{margin-bottom:14px}
+.case p:last-child{margin-bottom:0}
+.case .tag{
+  font-size:.7rem;letter-spacing:.15em;
+  color:var(--dim);text-transform:uppercase;
+  margin-bottom:16px;
+}
+.case .result{
+  margin-top:20px;
+  padding:16px 0 0;
+  border-top:1px dashed var(--line);
+  font-family:var(--h);font-weight:700;
+  font-size:clamp(1rem,1.4vw,1.15rem);
+  color:var(--fg);
+}
+.case .result .red{color:var(--red)}
+
+/* Финальный аккорд */
+.final{
+  margin:96px 0 32px;
+  padding:40px 32px;
+  border:2px solid var(--red);
+  background:rgba(255,45,45,.05);
+}
+.final .label{
+  font-size:.7rem;letter-spacing:.25em;
+  color:var(--red);text-transform:uppercase;
+  margin-bottom:20px;
+}
+.final p{
+  font-family:var(--h);font-weight:700;
+  font-size:clamp(1.1rem,2vw,1.5rem);
+  line-height:1.35;color:var(--fg);
+  margin-bottom:12px;
+}
+.final p strong{color:var(--red);font-weight:900}
+
+.foot{
+  margin-top:96px;padding:28px 0 24px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;text-align:center;
+  font-size:.65rem;letter-spacing:.12em;
+  color:var(--dim);text-transform:uppercase;
+}
+.foot-center{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.foot-center a{color:var(--fg)}
+.foot-center a:hover{color:var(--red)}
+.foot-center .sep{color:var(--dim)}
+
+@media (max-width:900px){
+  .stats{grid-template-columns:1fr;gap:20px}
+}
+@media (max-width:600px){
+  body{font-size:14px;line-height:1.65}
+  .page-head{margin-bottom:56px}
+  .case{padding:24px 18px;margin:48px 0}
+  .final{padding:28px 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<header class="top">
+  <a href="index.html">← На главную</a>
+  <span class="page-title">[04] / Results</span>
+</header>
+
+<main>
+
+  <div class="page-head">
+    <div class="num">04 // PROOF.</div>
+    <h1>Результаты</h1>
+    <p class="subtitle">
+      Что меняется, когда человек, система и технология начинают работать вместе.
+    </p>
+  </div>
+
+  <article class="manifesto">
+
+    <p>
+      За моей работой стоят не только годы управления и консалтинга, но и конкретные
+      изменения в бизнесе, командах и процессах.
+    </p>
+    <p>
+      Я работала с компаниями разного масштаба и профиля: от коммерческих команд
+      и дилерских сетей до крупных B2B- и B2G-проектов.
+    </p>
+    <p class="muted">
+      Названия компаний не раскрываются. Вместо этого я показываю контекст и характер задач.
+    </p>
+
+  </article>
+
+  <!-- ЦИФРЫ -->
+  <div class="stats">
+    <div class="stat">
+      <span class="num-big"><span class="red">224</span> млн ₽</span>
+      <span class="label">Оборот за 7 лет</span>
+    </div>
+    <div class="stat">
+      <span class="num-big"><span class="red">+111</span> млн ₽</span>
+      <span class="label">Рост после стагнации</span>
+    </div>
+    <div class="stat">
+      <span class="num-big"><span class="red">120+</span> регионов</span>
+      <span class="label">Россия · СНГ · Восточная Европа</span>
+    </div>
+    <div class="stat">
+      <span class="num-big"><span class="red">3000+</span> человек</span>
+      <span class="label">Прошли обучение</span>
+    </div>
+    <div class="stat">
+      <span class="num-big"><span class="red">10 000+</span></span>
+      <span class="label">Часов обучения и практики</span>
+    </div>
+    <div class="stat">
+      <span class="num-big"><span class="red">120%</span></span>
+      <span class="label">KPI команды после перестройки</span>
+    </div>
+  </div>
+
+  <article class="manifesto">
+
+    <!-- КЕЙС 1 -->
+    <section class="case">
+      <div class="case-num">01 // B2B · INDUSTRY</div>
+      <h2>Промышленное оборудование и B2B</h2>
+      <div class="tag">Продажи · сервис · дилеры · цифра</div>
+
+      <p><strong>Задача:</strong> вывести продажи и операционную работу из режима постоянного ручного управления.</p>
+      <p>
+        Работа включала развитие продаж, клиентского сервиса, дилерского направления,
+        внутренних процессов и цифровых инструментов.
+      </p>
+      <p>
+        За 7 лет в управляемом мной бизнесе был сформирован оборот <strong>224 млн ₽</strong>.
+      </p>
+      <p>
+        В работе использовались и перестраивались CRM, 1С, Bitrix24, IP-телефония,
+        GPS-контроль и электронное обучение.
+      </p>
+
+      <p class="result">
+        <span class="red">→</span> Система стала масштабируемой, ключевые процессы
+        получили структуру, контроль и инструменты управления.
+      </p>
+    </section>
+
+    <!-- КЕЙС 2 -->
+    <section class="case">
+      <div class="case-num">02 // FEDERAL · SERVICE</div>
+      <h2>Федеральная сеть сервисных компаний</h2>
+      <div class="tag">Продажи · команда · управление</div>
+
+      <p><strong>Задача:</strong> выйти из многолетней стагнации и изменить результат работы коммерческой команды.</p>
+      <p>
+        Работа была сосредоточена не только на обучении продавцов, но и на изменении подходов
+        к продажам, коммуникации и управлению.
+      </p>
+
+      <p class="result">
+        <span class="red">→</span> <strong>+111 млн ₽</strong> после периода стагнации
+        на уровне около 800 млн ₽.
+      </p>
+      <p>
+        В другой коммерческой задаче после изменения подхода к работе команды был достигнут
+        результат <strong>120% KPI</strong>.
+      </p>
+    </section>
+
+    <!-- КЕЙС 3 -->
+    <section class="case">
+      <div class="case-num">03 // PRODUCTION · DEALERS</div>
+      <h2>Производство и дилерская сеть</h2>
+      <div class="tag">Партнёры · обучение · регионы</div>
+
+      <p>
+        <strong>Задача:</strong> развивать партнёрскую сеть в разных регионах и одновременно
+        повышать качество работы дилеров.
+      </p>
+      <p>
+        Работа включала обучение, коммуникацию с партнёрами, стандарты, контроль,
+        развитие продаж и сопровождение регионов.
+      </p>
+
+      <p class="result">
+        <span class="red">→</span> Система работы с дилерами и специалистами в
+        <strong>120+ регионах</strong> России, СНГ и Восточной Европы.
+      </p>
+      <p><strong>3 000+ человек</strong> прошли обучение и практическую работу.</p>
+      <p><strong>10 000+ часов</strong> обучения, развития и консультаций.</p>
+    </section>
+
+    <!-- КЕЙС 4 -->
+    <section class="case">
+      <div class="case-num">04 // REGIONAL · B2B</div>
+      <h2>Региональное подразделение B2B-компании</h2>
+      <div class="tag">Запуск с нуля · люди · процессы</div>
+
+      <p>
+        <strong>Задача:</strong> запустить новое подразделение и сформировать рабочую систему
+        практически с нуля.
+      </p>
+      <p>
+        В фокусе были подбор и развитие людей, организация продаж, клиентская работа,
+        процессы и взаимодействие с центральной структурой.
+      </p>
+
+      <p class="result">
+        <span class="red">→</span> Новое подразделение было запущено и интегрировано
+        в существующую бизнес-систему.
+      </p>
+    </section>
+
+    <!-- КЕЙС 5 -->
+    <section class="case">
+      <div class="case-num">05 // GOV · B2G · INFRA</div>
+      <h2>Государственные и инфраструктурные проекты</h2>
+      <div class="tag">B2G · многоуровневые решения</div>
+
+      <p>
+        <strong>Задача:</strong> работать с многоуровневыми B2B/B2G-проектами, где решение
+        зависит не от одного человека или отдела.
+      </p>
+      <p>
+        В работе были проекты для государственных структур, региональных органов власти,
+        транспортной инфраструктуры, технологических площадок и крупных организаций.
+      </p>
+      <p>
+        Здесь требовалось одновременно учитывать коммерческие интересы, внутреннюю структуру
+        организаций, процедуры принятия решений, коммуникацию между участниками
+        и требования конкретного проекта.
+      </p>
+
+      <p class="result">
+        <span class="red">→</span> Проведение сложных проектов через несколько уровней
+        принятия решений и выстраивание взаимодействия между сторонами.
+      </p>
+    </section>
+
+    <!-- КЕЙС 6 -->
+    <section class="case">
+      <div class="case-num">06 // HOSPITALITY · INTL</div>
+      <h2>Гостиничный бизнес и международный hospitality</h2>
+      <div class="tag">Customer experience · исследование</div>
+
+      <p>
+        <strong>Задача:</strong> понять, почему фактический опыт гостя расходится
+        с его ожиданиями от продукта.
+      </p>
+      <p>
+        Исследовался путь русскоязычного гостя: от коммуникации до проживания, питания,
+        сервиса и решения проблем.
+      </p>
+      <p>
+        Были выявлены конкретные точки разрыва между позиционированием продукта,
+        ожиданиями гостей и реальным опытом.
+      </p>
+      <p>
+        В числе наблюдаемых ситуаций — работа с VIP-гостями, семейными запросами,
+        специальными требованиями к питанию, восстановлением сервиса после негативного
+        опыта и систематизацией обратной связи.
+      </p>
+
+      <p class="result">
+        <span class="red">→</span> Проблемы клиентского опыта переведены из отдельных
+        жалоб в систему наблюдаемых процессов и точек улучшения.
+      </p>
+    </section>
+
+    <!-- КЕЙС 7 -->
+    <section class="case">
+      <div class="case-num">07 // SALES · SERVICE</div>
+      <h2>Продажи и клиентский сервис</h2>
+      <div class="tag">Люди · стандарты · повторные продажи</div>
+
+      <p>
+        <strong>Задача:</strong> повысить результативность людей без простого увеличения нагрузки.
+      </p>
+      <p>
+        За годы работы в продажах и клиентском сервисе я прошла путь от непосредственной
+        работы с клиентами до управления коммерческими и операционными системами.
+      </p>
+      <p>
+        В работе были десятки тысяч клиентских взаимодействий, сложные переговоры, претензии,
+        повторные продажи, развитие сотрудников и построение стандартов.
+      </p>
+
+      <p class="result">
+        <span class="red">→</span> Повышение качества клиентского взаимодействия,
+        развитие сотрудников и перевод индивидуального опыта сильных специалистов
+        в воспроизводимые стандарты.
+      </p>
+    </section>
+
+    <!-- КЕЙС 8 -->
+    <section class="case">
+      <div class="case-num">08 // L&amp;D · LEARNING</div>
+      <h2>Обучение и развитие персонала</h2>
+      <div class="tag">Люди · поведение · практика</div>
+
+      <p>
+        <strong>Задача:</strong> не просто передать сотрудникам знания, а изменить
+        их рабочее поведение.
+      </p>
+      <p>Работала с продавцами, руководителями, специалистами и партнёрами.</p>
+      <p>
+        Обучение строилось вокруг реальных рабочих ситуаций: переговоров, продаж,
+        клиентского сервиса, управления и выполнения стандартов.
+      </p>
+
+      <p class="result">
+        <span class="red">→</span> <strong>3 000+ обученных специалистов.</strong><br>
+        <strong>120+ регионов.</strong><br>
+        <strong>10 000+ часов</strong> обучения и практической работы.
+      </p>
+    </section>
+
+    <!-- КЕЙС 9 -->
+    <section class="case">
+      <div class="case-num">09 // DIGITAL · PROCESS</div>
+      <h2>Процессы и цифровизация</h2>
+      <div class="tag">CRM · ERP · автоматизация</div>
+
+      <p>
+        <strong>Задача:</strong> убрать ручную работу там, где она перестала создавать
+        ценность, и сделать процессы прозрачнее.
+      </p>
+      <p>
+        Работала с CRM, ERP, телефонией, GPS-контролем, электронным обучением
+        и внутренними системами коммуникации.
+      </p>
+      <p>Но технология никогда не рассматривалась как самостоятельная цель.</p>
+      <p>
+        Сначала определялось, <strong>какую проблему нужно решить</strong>,
+        затем выбирался инструмент.
+      </p>
+
+      <p class="result">
+        <span class="red">→</span> Автоматизация отдельных операций, повышение прозрачности
+        процессов, снижение зависимости от ручного контроля и создание единой
+        информационной среды для работы людей.
+      </p>
+    </section>
+
+    <!-- КЕЙС 10 -->
+    <section class="case">
+      <div class="case-num">10 // SPECIAL · NONSTANDARD</div>
+      <h2>Сложные и нестандартные ситуации</h2>
+      <div class="tag">Диагностика · причина · точка изменения</div>
+
+      <p>
+        Иногда ко мне приходили не тогда, когда всё уже было хорошо.
+      </p>
+      <p>А когда возникала ситуация, которую невозможно решить стандартным регламентом.</p>
+
+      <div>
+        <p>Конфликт между людьми или подразделениями.</p>
+        <p>Проблемный клиент.</p>
+        <p>Падение результата.</p>
+        <p>Сбой процесса.</p>
+        <p>Необходимость быстро запустить новое направление.</p>
+        <p>Сопротивление изменениям.</p>
+        <p>Ситуация, в которой непонятно, где именно находится проблема.</p>
+      </div>
+
+      <p>В таких случаях моя работа начинается с диагностики.</p>
+      <p>Я разбираю ситуацию на составляющие:</p>
+
+      <p class="result">
+        <span class="red">→</span> люди → интересы → процессы → информация →
+        решения → технологии → результат.
+      </p>
+
+      <p>
+        И ищу не того, кто виноват, а место, в котором система перестала работать.
+      </p>
+    </section>
+
+  </article>
+
+  <!-- ФИНАЛ -->
+  <section class="final">
+    <div class="label">// Что объединяет эти проекты</div>
+    <p>Отрасли и задачи разные.</p>
+    <p>Но принцип остаётся одним.</p>
+    <p><strong>Если человек постоянно компенсирует недостатки системы — проблема не только в человеке.</strong></p>
+    <p>Если технология не даёт результата — проблема может быть не в технологии.</p>
+    <p>Если процесс требует постоянного ручного контроля — возможно, проблема в самом процессе.</p>
+    <p>Если сильный сотрудник перестал давать результат — возможно, изменилась его роль.</p>
+    <p>Поэтому я ищу точку, в которой изменение действительно меняет результат.</p>
+    <p>Иногда это человек. Иногда процесс. Иногда технология.</p>
+    <p><strong>Чаще — их связь.</strong></p>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>© 2022–<span id="year">2026</span> LENA SHOUT. Все права защищены.</span>
+  <span class="foot-center">
+    <a href="legal/requisites.html">Реквизиты</a>
+    <span class="sep">·</span>
+    <a href="legal/terms.html">Оферта</a>
+    <span class="sep">·</span>
+    <a href="legal/privacy.html">Политика</a>
+  </span>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
