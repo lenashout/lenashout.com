@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#000000" />
+<title>Методология — LENA SHOUT</title>
+<meta name="description" content="Методология LENA SHOUT: человек, система, технология — не по отдельности, а в одной конструкции." />
+<meta name="robots" content="index, follow" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=JetBrains+Mono:wght@300;400;700&display=swap');
+
+:root{
+  --bg:#000; --fg:#fff; --dim:#888; --red:#ff2d2d;
+  --line:rgba(255,255,255,.15);
+  --pad:clamp(20px,5vw,80px);
+  --h:'Space Grotesk',system-ui,sans-serif;
+  --m:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden;background:var(--bg);color:var(--fg)}
+body{font-family:var(--m);font-size:15px;line-height:1.7;padding:0 var(--pad);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none;transition:color .2s}
+a:hover{color:var(--dim)}
+
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:100;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+
+.top{
+  padding:24px 0 16px;border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;flex-wrap:wrap;
+  font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:64px;
+}
+.top a{color:var(--fg)}
+.top a:hover{color:var(--red)}
+.top .page-title{color:var(--dim)}
+
+.page-head{margin-bottom:80px}
+.page-head .num{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(2.5rem,7vw,6rem);
+  line-height:.85;color:transparent;-webkit-text-stroke:2px var(--fg);
+  margin-bottom:16px;
+}
+.page-head h1{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(2.5rem,10vw,8rem);
+  line-height:.85;letter-spacing:-.05em;text-transform:uppercase;
+  margin-bottom:32px;
+}
+.page-head .subtitle{
+  max-width:820px;
+  font-family:var(--h);
+  font-weight:700;
+  font-size:clamp(1.1rem,2vw,1.6rem);
+  line-height:1.3;color:var(--red);
+  text-transform:uppercase;
+  letter-spacing:-.01em;
+}
+
+.manifesto{max-width:820px}
+.manifesto p{margin-bottom:16px;color:var(--fg)}
+.manifesto p.muted{color:var(--dim)}
+.manifesto strong{font-weight:700;color:var(--fg)}
+.manifesto em{font-style:italic;color:var(--dim)}
+
+.chapter{margin-bottom:72px}
+.chapter h2{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(1.4rem,2.8vw,2.2rem);
+  letter-spacing:-.02em;text-transform:uppercase;
+  line-height:1.1;
+  margin-bottom:32px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+.chapter h2 .ch-num{
+  display:block;
+  font-size:.7rem;letter-spacing:.2em;
+  color:var(--red);margin-bottom:12px;font-weight:700;
+}
+.chapter p{margin-bottom:16px}
+
+/* Список-перечисление (короткие строки) */
+.lines p{color:var(--fg)}
+.lines p.muted{color:var(--dim)}
+
+/* Выделенные тезисы */
+.thesis{
+  border-left:3px solid var(--red);
+  padding:12px 0 12px 24px;
+  margin:24px 0;
+  font-family:var(--h);font-weight:700;
+  font-size:clamp(1.05rem,1.6vw,1.25rem);
+  line-height:1.4;color:var(--fg);
+  letter-spacing:-.01em;
+}
+
+/* Отдельный блок-«код» */
+.blockquote{
+  border:1px solid var(--line);
+  padding:24px;
+  margin:24px 0;
+  background:rgba(255,255,255,.02);
+}
+.blockquote p:last-child{margin-bottom:0}
+
+/* Финальный аккорд */
+.final{
+  margin:96px 0 32px;
+  padding:40px 32px;
+  border:2px solid var(--red);
+  background:rgba(255,45,45,.05);
+}
+.final p{
+  font-family:var(--h);font-weight:900;
+  font-size:clamp(1.4rem,3vw,2.2rem);
+  line-height:1.15;letter-spacing:-.02em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin:0;
+}
+.final p:last-child{margin-bottom:0}
+
+.foot{
+  margin-top:96px;padding:28px 0 24px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;text-align:center;
+  font-size:.65rem;letter-spacing:.12em;
+  color:var(--dim);text-transform:uppercase;
+}
+.foot-center{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.foot-center a{color:var(--fg)}
+.foot-center a:hover{color:var(--red)}
+.foot-center .sep{color:var(--dim)}
+
+@media (max-width:600px){
+  body{font-size:14px;line-height:1.65}
+  .page-head{margin-bottom:56px}
+  .chapter{margin-bottom:56px}
+  .final{padding:28px 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<header class="top">
+  <a href="index.html">← На главную</a>
+  <span class="page-title">[03] / Method</span>
+</header>
+
+<main>
+
+  <div class="page-head">
+    <div class="num">03 // METHOD.</div>
+    <h1>Методология</h1>
+    <p class="subtitle">Человек. Система. Технология.</p>
+  </div>
+
+  <article class="manifesto">
+
+    <p>
+      Большинство проблем внутри бизнеса принято искать либо в людях, либо в процессах,
+      либо в технологиях.
+    </p>
+
+    <div class="lines">
+      <p>Слабые продажи? Нужен новый руководитель.</p>
+      <p>Конфликт в команде? Нужно обучить сотрудников.</p>
+      <p>Люди перегружены? Нужен ещё один сотрудник.</p>
+      <p>Процессы медленные? Нужна автоматизация.</p>
+      <p>ИИ не внедряется? Люди сопротивляются изменениям.</p>
+    </div>
+
+    <p>Но в реальности эти вещи редко существуют отдельно.</p>
+
+    <p>
+      Человек работает внутри системы. Система формирует его поведение.
+      Технологии меняют саму систему. А результат появляется там, где все три элемента
+      работают согласованно.
+    </p>
+
+    <p>
+      Поэтому я смотрю не только на то, <strong>что не работает</strong>, но и на то,
+      <strong>почему система производит именно такой результат</strong>.
+    </p>
+
+    <!-- Если вы руководите бизнесом -->
+    <section class="chapter">
+      <h2><span class="ch-num">01</span>Если вы руководите бизнесом</h2>
+      <p>Возможно, вы узнаёте себя в одной из этих ситуаций.</p>
+
+      <div class="lines">
+        <p>Компания выросла, но управлять ею стало сложнее.</p>
+        <p>Раньше всё держалось на нескольких сильных людях. Теперь без них процессы останавливаются.</p>
+        <p>Руководители заняты операционкой и постоянно тушат пожары вместо того, чтобы заниматься развитием.</p>
+        <p>Сотрудники вроде бы работают, но результат нестабилен.</p>
+        <p>Одни задачи постоянно дублируются, другие теряются между подразделениями.</p>
+        <p>Решения принимаются медленно. Информация не доходит до тех, кому она нужна.</p>
+        <p>Собственник понимает, что проблема есть, но не может точно определить, где она находится.</p>
+        <p>Или бизнес уже меняется, а организационная модель осталась прежней.</p>
+      </div>
+
+      <p>
+        В таких ситуациях бессмысленно просто добавлять людей, внедрять ещё одну систему
+        или проводить очередной тренинг.
+      </p>
+
+      <p>Сначала нужно увидеть конструкцию целиком.</p>
+
+      <div class="lines">
+        <p>Где возникает потеря?</p>
+        <p>Что заставляет людей действовать именно так?</p>
+        <p>Какие процессы создают лишнюю работу?</p>
+        <p>Какие решения до сих пор завязаны на конкретных людях?</p>
+        <p>Что можно автоматизировать?</p>
+        <p>А что, наоборот, нельзя отдавать алгоритму?</p>
+      </div>
+    </section>
+
+    <!-- Если вы руководите людьми -->
+    <section class="chapter">
+      <h2><span class="ch-num">02</span>Если вы руководите людьми</h2>
+      <p>Иногда проблема находится не в сотрудниках.</p>
+
+      <div class="lines">
+        <p>Сильный специалист может плохо работать в неправильно устроенной системе.</p>
+        <p>Хороший руководитель может потерять эффективность, если у него нет полномочий, информации или понятных критериев результата.</p>
+        <p>Команда может сопротивляться изменениям не потому, что люди ленивые или не хотят развиваться, а потому что новая система угрожает их привычному способу работать.</p>
+        <p>А сотрудник может выглядеть немотивированным просто потому, что от него требуют результата, на который он фактически не влияет.</p>
+      </div>
+
+      <p>Поэтому я не рассматриваю человека отдельно от среды, в которой он работает.</p>
+
+      <p>Мне важно понять:</p>
+
+      <div class="thesis">
+        что именно система делает с человеком и что человек делает с системой.
+      </div>
+
+      <div class="lines">
+        <p>Где человек действительно является источником проблемы.</p>
+        <p>Где он лишь компенсирует недостатки организации.</p>
+        <p>Где ему не хватает компетенций.</p>
+        <p>Где ему не хватает полномочий.</p>
+        <p>Где проблема находится вообще не в нём.</p>
+      </div>
+
+      <p>
+        И что нужно изменить, чтобы нужное поведение стало естественным, а не постоянно
+        вытягивалось за счёт личного героизма отдельных сотрудников.
+      </p>
+    </section>
+
+    <!-- Профессиональный тупик -->
+    <section class="chapter">
+      <h2><span class="ch-num">03</span>Если вы сами оказались в профессиональном тупике</h2>
+      <p>Та же логика работает на уровне отдельного человека.</p>
+
+      <div class="lines">
+        <p>Возможно, вы много умеете, но ваша работа давно стала набором повторяющихся операций.</p>
+        <p>Вы чувствуете, что способны на большее, но не понимаете, на что именно.</p>
+        <p>Ваш опыт огромен, но рынок как будто не знает, куда вас поместить.</p>
+        <p>Часть ваших задач уже можно автоматизировать, и непонятно, в чём теперь ваша ценность.</p>
+        <p>Вы стали руководителем, но продолжаете делать работу специалиста.</p>
+        <p>Или, наоборот, хотите выйти из управления, потому что больше не хотите быть человеком, который постоянно отвечает за всё.</p>
+        <p>Возможно, вы просто переросли свою текущую роль.</p>
+      </div>
+
+      <p>В этом случае задача не всегда состоит в том, чтобы найти новую должность.</p>
+
+      <p>Иногда нужно заново определить <strong>свою функцию</strong>.</p>
+
+      <div class="lines">
+        <p>Что действительно требует вашего участия?</p>
+        <p>Что вы делаете только потому, что привыкли?</p>
+        <p>Какие задачи уже не соответствуют вашему уровню?</p>
+        <p>Что можно передать человеку, команде, системе или ИИ?</p>
+      </div>
+
+      <p>
+        И где находится та часть работы, в которой именно ваш опыт, мышление и способность
+        принимать решения создают наибольшую ценность?
+      </p>
+    </section>
+
+    <!-- ИИ -->
+    <section class="chapter">
+      <h2><span class="ch-num">04</span>Если в компании появляется ИИ</h2>
+      <p>Я не рассматриваю ИИ как универсальную замену людям.</p>
+      <p>И не считаю разумным внедрять технологии только потому, что их сейчас внедряют все.</p>
+
+      <p>Вопрос не в том, <strong>может ли ИИ выполнить эту работу</strong>.</p>
+      <p>Вопрос в том, <strong>нужно ли человеку вообще продолжать выполнять её вручную</strong>.</p>
+
+      <p>Я разбираю работу по функциям:</p>
+
+      <div class="lines">
+        <p>что должен делать человек;</p>
+        <p>что может делать технология;</p>
+        <p>что можно автоматизировать полностью;</p>
+        <p>что необходимо оставить под человеческим контролем;</p>
+        <p>где нужен опыт и профессиональное суждение;</p>
+        <p>где нужен контакт с другим человеком;</p>
+        <p>а где человек сегодня просто компенсирует плохо устроенный процесс.</p>
+      </div>
+
+      <p>
+        В результате технология становится не ещё одним инструментом, который нужно
+        обслуживать, а способом высвободить человеческий ресурс для более сложной
+        и ценной работы.
+      </p>
+    </section>
+
+    <!-- Кризис -->
+    <section class="chapter">
+      <h2><span class="ch-num">05</span>Если система уже находится в кризисе</h2>
+      <p>Иногда изменения нужны не потому, что хочется сделать бизнес немного эффективнее.</p>
+      <p>Иногда старый способ работы просто перестал работать.</p>
+
+      <div class="lines">
+        <p>Конфликт между собственниками и руководством.</p>
+        <p>Падение продаж.</p>
+        <p>Разрушение клиентского опыта.</p>
+        <p>Сбой в операционной системе.</p>
+        <p>Сопротивление масштабированию.</p>
+        <p>Потеря ключевых сотрудников.</p>
+        <p>Новая технология, которая не дала ожидаемого результата.</p>
+        <p>Подразделения, которые существуют рядом, но фактически работают друг против друга.</p>
+      </div>
+
+      <p>В таких ситуациях я не начинаю с поиска виноватого.</p>
+      <p>Кризис полезнее рассматривать как информацию.</p>
+      <p>Он показывает, где система достигла своего предела.</p>
+
+      <p>
+        Моя задача в этот момент — отделить симптомы от причины, быстро восстановить
+        картину происходящего и определить, <strong>что действительно необходимо изменить,
+        а что можно оставить как есть</strong>.
+      </p>
+    </section>
+
+    <!-- Принцип работы -->
+    <section class="chapter">
+      <h2><span class="ch-num">06</span>Мой принцип работы</h2>
+      <p>Я не верю в универсальные решения.</p>
+
+      <div class="lines">
+        <p>Не каждому бизнесу нужна цифровая трансформация.</p>
+        <p>Не каждой команде нужен тренинг.</p>
+        <p>Не каждому сотруднику нужен коучинг.</p>
+        <p>Не каждый процесс нужно автоматизировать.</p>
+        <p>Не каждого сильного специалиста нужно превращать в руководителя.</p>
+        <p>И не каждую человеческую функцию имеет смысл заменять технологией.</p>
+      </div>
+
+      <div class="lines">
+        <p>Иногда лучший результат даёт новая система.</p>
+        <p>Иногда — новый человек.</p>
+        <p>Иногда — новая роль для существующего человека.</p>
+        <p>Иногда — автоматизация.</p>
+        <p>Иногда — несколько правильно заданных вопросов.</p>
+      </div>
+
+      <p>
+        А иногда самое эффективное решение заключается в том, чтобы перестать делать то,
+        что больше не создаёт ценности.
+      </p>
+
+      <p>Поэтому я начинаю с диагностики.</p>
+      <p>Сначала понять систему.</p>
+      <p>Потом определить точку воздействия.</p>
+      <p>И только после этого выбирать инструмент.</p>
+    </section>
+
+    <!-- Объединяет -->
+    <section class="chapter">
+      <h2><span class="ch-num">07</span>Что объединяет все эти задачи</h2>
+      <p>Меня интересует один вопрос:</p>
+
+      <div class="thesis">
+        как сделать так, чтобы человек, система и технология усиливали друг друга,
+        а не компенсировали слабости друг друга.
+      </div>
+
+      <div class="lines">
+        <p>Человек не должен быть расходным материалом системы.</p>
+        <p>Система не должна существовать только для того, чтобы создавать людям дополнительную работу.</p>
+        <p>Технология не должна внедряться ради самой технологии.</p>
+        <p>А бизнес не должен выбирать между эффективностью и человеческим фактором.</p>
+      </div>
+
+      <p>Хорошо устроенная система позволяет человеку делать то, в чём он действительно силён.</p>
+      <p>Технология забирает то, что не требует человеческого участия.</p>
+      <p>Процессы делают результат воспроизводимым.</p>
+      <p>А руководство сохраняет способность видеть целое и принимать решения.</p>
+    </section>
+
+    <!-- Итог -->
+    <section class="chapter">
+      <h2><span class="ch-num">08</span>Поэтому</h2>
+      <p>Я помогаю не просто решать отдельные проблемы.</p>
+
+      <p>
+        Я помогаю <strong>перестраивать связь между человеком, работой и системой</strong>.
+      </p>
+
+      <p>Когда эта связь становится ясной, становится понятнее почти всё:</p>
+
+      <div class="lines">
+        <p>что делать человеку;</p>
+        <p>что менять руководителю;</p>
+        <p>что перестраивать бизнесу;</p>
+        <p>что автоматизировать;</p>
+        <p>что оставить людям;</p>
+        <p>от чего отказаться;</p>
+        <p>и куда двигаться дальше.</p>
+      </div>
+    </section>
+
+    <section class="final">
+      <p>Человек. Система. Технология.</p>
+      <p>Не по отдельности. В одной конструкции.</p>
+    </section>
+
+  </article>
+
+</main>
+
+<footer class="foot">
+  <span>© 2022–<span id="year">2026</span> LENA SHOUT. Все права защищены.</span>
+  <span class="foot-center">
+    <a href="legal/requisites.html">Реквизиты</a>
+    <span class="sep">·</span>
+    <a href="legal/terms.html">Оферта</a>
+    <span class="sep">·</span>
+    <a href="legal/privacy.html">Политика</a>
+  </span>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
